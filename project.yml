@@ -9,11 +9,11 @@ targets:
     type: application
     platform: macOS
     sources:
-      - MeetingReminders
+      - HeadsUp
     settings:
       base:
-        INFOPLIST_FILE: MeetingReminders/App/Info.plist
-        CODE_SIGN_ENTITLEMENTS: MeetingReminders/MeetingReminders.entitlements
+        INFOPLIST_FILE: HeadsUp/App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: HeadsUp/HeadsUp.entitlements
         PRODUCT_BUNDLE_IDENTIFIER: com.dpeck.HeadsUp
         PRODUCT_NAME: Heads Up
         MARKETING_VERSION: "1.0.1"
@@ -25,4 +25,4 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         ENABLE_HARDENED_RUNTIME: YES
     entitlements:
-      path: MeetingReminders/MeetingReminders.entitlements
+      path: HeadsUp/HeadsUp.entitlements

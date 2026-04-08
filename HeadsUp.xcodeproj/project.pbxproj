@@ -19,14 +19,14 @@
 		BD9F792426D0567AD7840090 /* MenuBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5AF2D257E3C5C9706D36A /* MenuBarIcon.swift */; };
 		D694CA700D84B938DBD5871D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8DDB38364940FE95868F5 /* SettingsView.swift */; };
 		DF0FED4E5157FB7379E75C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FC3983E5074F2218AB5A65 /* Assets.xcassets */; };
-		F856CF28D6E00AE1C3DA5F35 /* MeetingRemindersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905EBB591502AEB4EC43ED8 /* MeetingRemindersApp.swift */; };
+		F856CF28D6E00AE1C3DA5F35 /* HeadsUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905EBB591502AEB4EC43ED8 /* HeadsUpApp.swift */; };
 		FC30CFC1AA56685D391C4967 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4651778A4DB5CAC6DA63E890 /* MenuBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09828ECF5EAB84C096B1B9D2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0EC8F938865FDC1E55A020C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		0F6F5795719AF6A6ED037BA4 /* MeetingReminders.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingReminders.entitlements; sourceTree = "<group>"; };
+		0F6F5795719AF6A6ED037BA4 /* HeadsUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeadsUp.entitlements; sourceTree = "<group>"; };
 		1957C2AD7C7E08A378E7CBBA /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		22FC3983E5074F2218AB5A65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24F5AF2D257E3C5C9706D36A /* MenuBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarIcon.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		B1ECA064541A5E0C953E3D7E /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B3A99C9189B4E1E5606C7B43 /* ZoomURLExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomURLExtractor.swift; sourceTree = "<group>"; };
 		D23AFA4705396A9BCC7DCB88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D905EBB591502AEB4EC43ED8 /* MeetingRemindersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingRemindersApp.swift; sourceTree = "<group>"; };
+		D905EBB591502AEB4EC43ED8 /* HeadsUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadsUpApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -57,7 +57,7 @@
 			children = (
 				D23AFA4705396A9BCC7DCB88 /* AppDelegate.swift */,
 				0EC8F938865FDC1E55A020C4 /* Info.plist */,
-				D905EBB591502AEB4EC43ED8 /* MeetingRemindersApp.swift */,
+				D905EBB591502AEB4EC43ED8 /* HeadsUpApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -108,11 +108,11 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		BB27B6119620E95F3ADCD56F /* MeetingReminders */ = {
+		BB27B6119620E95F3ADCD56F /* HeadsUp */ = {
 			isa = PBXGroup;
 			children = (
 				22FC3983E5074F2218AB5A65 /* Assets.xcassets */,
-				0F6F5795719AF6A6ED037BA4 /* MeetingReminders.entitlements */,
+				0F6F5795719AF6A6ED037BA4 /* HeadsUp.entitlements */,
 				8916E80646F3C3BD778C285E /* Alert */,
 				567D6DF0E4DD03BA0819AD76 /* App */,
 				735A040420D6558D3E47D905 /* Calendar */,
@@ -120,13 +120,13 @@
 				8376D76F6C5E07B3CF30F24A /* Scheduling */,
 				B1E9F4205D935739D769AFE2 /* Settings */,
 			);
-			path = MeetingReminders;
+			path = HeadsUp;
 			sourceTree = "<group>";
 		};
 		CCBB98D92DE9BB4E90CFB5F9 = {
 			isa = PBXGroup;
 			children = (
-				BB27B6119620E95F3ADCD56F /* MeetingReminders */,
+				BB27B6119620E95F3ADCD56F /* HeadsUp */,
 				35C0838E51B7A10F47EA1EC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 				4D9AFDD8FB2C6E75C6BBE7B4 /* AppSettings.swift in Sources */,
 				8A7907989C4F4DCF338D0D54 /* CalendarEvent.swift in Sources */,
 				26E30078F64A2F75DC87168D /* CalendarManager.swift in Sources */,
-				F856CF28D6E00AE1C3DA5F35 /* MeetingRemindersApp.swift in Sources */,
+				F856CF28D6E00AE1C3DA5F35 /* HeadsUpApp.swift in Sources */,
 				BD9F792426D0567AD7840090 /* MenuBarIcon.swift in Sources */,
 				FC30CFC1AA56685D391C4967 /* MenuBarView.swift in Sources */,
 				77426BE4BDACA4978A2EA1FA /* ReminderScheduler.swift in Sources */,
@@ -224,14 +224,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MeetingReminders/MeetingReminders.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HeadsUp/HeadsUp.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MeetingReminders/App/Info.plist;
+				INFOPLIST_FILE = HeadsUp/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -367,14 +367,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MeetingReminders/MeetingReminders.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HeadsUp/HeadsUp.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MeetingReminders/App/Info.plist;
+				INFOPLIST_FILE = HeadsUp/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
