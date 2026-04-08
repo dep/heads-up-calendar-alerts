@@ -31,8 +31,14 @@ enum AlertWindowController {
                 activeWindows.removeAll { $0 === window }
             }
 
+            let snoozeAction = {
+                window.orderOut(nil)
+                activeWindows.removeAll { $0 === window }
+                ReminderScheduler.shared.snooze(event: event)
+            }
+
             window.contentView = NSHostingView(
-                rootView: AlertView(event: event, onDismiss: dismissAction)
+                rootView: AlertView(event: event, onDismiss: dismissAction, onSnooze: snoozeAction)
             )
 
             activeWindows.append(window)

@@ -3,6 +3,7 @@ import SwiftUI
 struct AlertView: View {
     let event: CalendarEvent
     let onDismiss: () -> Void
+    let onSnooze: () -> Void
 
     @State private var appeared = false
     @State private var autoDismissTimer: Timer?
@@ -58,6 +59,18 @@ struct AlertView: View {
                         .keyboardShortcut(.return, modifiers: [])
                     }
 
+                    if event.startDate.timeIntervalSinceNow > 5 {
+                        Button(action: { snooze() }) {
+                            Label("Snooze until event starts", systemImage: "clock.arrow.circlepath")
+                                .font(.system(size: 16, weight: .medium))
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 12)
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.orange)
+                        .keyboardShortcut("s", modifiers: [])
+                    }
+
                     Button(action: { dismiss() }) {
                         Text("Dismiss")
                             .font(.system(size: 16, weight: .medium))
@@ -102,6 +115,16 @@ struct AlertView: View {
     private func joinZoom(_ url: URL) {
         NSWorkspace.shared.open(url)
         dismiss()
+    }
+
+    private func snooze() {
+        autoDismissTimer?.invalidate()
+        withAnimation(.easeOut(duration: 0.2)) {
+            appeared = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            onSnooze()
+        }
     }
 
     private func dismiss() {

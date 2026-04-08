@@ -6,8 +6,10 @@ final class ReminderScheduler: ObservableObject {
     @Published var nextAlertEvent: CalendarEvent?
 
     private var alertTimer: Timer?
+    private var snoozeTimer: Timer?
     private var refreshTimer: Timer?
     private var alertedEventIDs: Set<String> = []
+    private var snoozedEventIDs: Set<String> = []
 
     private init() {}
 
@@ -21,8 +23,21 @@ final class ReminderScheduler: ObservableObject {
     func stop() {
         alertTimer?.invalidate()
         alertTimer = nil
+        snoozeTimer?.invalidate()
+        snoozeTimer = nil
         refreshTimer?.invalidate()
         refreshTimer = nil
+    }
+
+    func snooze(event: CalendarEvent) {
+        snoozedEventIDs.insert(event.id)
+        let delay = max(event.startDate.timeIntervalSinceNow, 1)
+        snoozeTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
+            self?.snoozedEventIDs.remove(event.id)
+            self?.alertedEventIDs.remove(event.id)
+            self?.scheduleNextAlert()
+        }
+        scheduleNextAlert()
     }
 
     func reschedule() {
@@ -58,7 +73,8 @@ final class ReminderScheduler: ObservableObject {
 
         var best: (CalendarEvent, Date)?
         for event in events {
-            guard !alertedEventIDs.contains(event.id) else { continue }
+            guard !alertedEventIDs.contains(event.id),
+                  !snoozedEventIDs.contains(event.id) else { continue }
 
             let alertTime = event.startDate.addingTimeInterval(-leadTime)
 
