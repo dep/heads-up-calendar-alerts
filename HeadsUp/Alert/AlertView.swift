@@ -61,7 +61,7 @@ struct AlertView: View {
 
                     if event.startDate.timeIntervalSinceNow > 5 {
                         Button(action: { snooze() }) {
-                            Label("Snooze until event starts", systemImage: "clock.arrow.circlepath")
+                            Label("Snooze", systemImage: "clock.arrow.circlepath")
                                 .font(.system(size: 16, weight: .medium))
                                 .padding(.horizontal, 24)
                                 .padding(.vertical, 12)
@@ -84,7 +84,7 @@ struct AlertView: View {
                 .padding(.top, 8)
             }
             .padding(48)
-            .frame(maxWidth: 520)
+            .frame(maxWidth: 600)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
             .scaleEffect(appeared ? 1.0 : 0.8)
             .opacity(appeared ? 1.0 : 0)
