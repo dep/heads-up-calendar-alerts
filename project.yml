@@ -1,0 +1,26 @@
+name: MeetingReminders
+options:
+  bundleIdPrefix: com.dpeck
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "16.0"
+targets:
+  MeetingReminders:
+    type: application
+    platform: macOS
+    sources:
+      - MeetingReminders
+    settings:
+      base:
+        INFOPLIST_FILE: MeetingReminders/App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: MeetingReminders/MeetingReminders.entitlements
+        PRODUCT_BUNDLE_IDENTIFIER: com.dpeck.MeetingReminders
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+    entitlements:
+      path: MeetingReminders/MeetingReminders.entitlements
