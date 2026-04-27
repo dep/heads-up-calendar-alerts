@@ -28,6 +28,12 @@ xcuserdata/
 *.provisionprofile
 
 # AI custom context (personal/team preferences, gitignored)
-.agents/USER_RULES.md
-.agents/TEAM_RULES.md
-.agents/LEARNING_LOG.md
+.agents/
+.codex/
+.opencode/
+.claude/
+.cursor/
+AGENTS.md
+CLAUDE.md
+CURSOR.md
+CODEX.md
