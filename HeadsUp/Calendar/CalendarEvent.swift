@@ -13,6 +13,7 @@ struct CalendarEvent: Identifiable, Equatable {
     let calendarColor: NSColor
     let isAllDay: Bool
     var zoomURL: URL?
+    var meetURL: URL?
 
     init(from ekEvent: EKEvent) {
         id = ekEvent.eventIdentifier
@@ -25,7 +26,8 @@ struct CalendarEvent: Identifiable, Equatable {
         calendarTitle = ekEvent.calendar.title
         calendarColor = ekEvent.calendar.color
         isAllDay = ekEvent.isAllDay
-        zoomURL = ZoomURLExtractor.extractURL(from: ekEvent)
+        zoomURL = ConferenceURLExtractor.zoomURL(from: ekEvent)
+        meetURL = ConferenceURLExtractor.meetURL(from: ekEvent)
     }
 
     static func == (lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {

@@ -39,47 +39,48 @@ struct AlertView: View {
                 }
 
                 if let location = event.location, !location.isEmpty,
-                   event.zoomURL == nil {
+                   event.zoomURL == nil, event.meetURL == nil {
                     Text(location)
                         .font(.system(size: 14))
                         .foregroundStyle(.white.opacity(0.6))
                         .lineLimit(2)
                 }
 
-                HStack(spacing: 16) {
-                    if let zoomURL = event.zoomURL {
-                        Button(action: { joinZoom(zoomURL) }) {
-                            Label("Join Zoom", systemImage: "video.fill")
-                                .font(.system(size: 16, weight: .semibold))
-                                .padding(.horizontal, 24)
-                                .padding(.vertical, 12)
+                VStack(spacing: 12) {
+                    if event.zoomURL != nil || event.meetURL != nil {
+                        HStack(spacing: 16) {
+                            if let zoomURL = event.zoomURL {
+                                joinButton("Join Zoom", url: zoomURL, tint: .blue, isPrimary: true)
+                            }
+                            if let meetURL = event.meetURL {
+                                joinButton("Join Meet", url: meetURL, tint: .green, isPrimary: event.zoomURL == nil)
+                            }
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.blue)
-                        .keyboardShortcut(.return, modifiers: [])
                     }
 
-                    if event.startDate.timeIntervalSinceNow > 5 {
-                        Button(action: { snooze() }) {
-                            Label("Snooze", systemImage: "clock.arrow.circlepath")
+                    HStack(spacing: 16) {
+                        if event.startDate.timeIntervalSinceNow > 5 {
+                            Button(action: { snooze() }) {
+                                Label("Snooze", systemImage: "clock.arrow.circlepath")
+                                    .font(.system(size: 16, weight: .medium))
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 12)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.orange)
+                            .keyboardShortcut("s", modifiers: [])
+                        }
+
+                        Button(action: { dismiss() }) {
+                            Text("Dismiss")
                                 .font(.system(size: 16, weight: .medium))
                                 .padding(.horizontal, 24)
                                 .padding(.vertical, 12)
                         }
                         .buttonStyle(.bordered)
-                        .tint(.orange)
-                        .keyboardShortcut("s", modifiers: [])
+                        .tint(.white.opacity(0.3))
+                        .keyboardShortcut(.escape, modifiers: [])
                     }
-
-                    Button(action: { dismiss() }) {
-                        Text("Dismiss")
-                            .font(.system(size: 16, weight: .medium))
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 12)
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.white.opacity(0.3))
-                    .keyboardShortcut(.escape, modifiers: [])
                 }
                 .padding(.top, 8)
             }
@@ -112,7 +113,19 @@ struct AlertView: View {
         }
     }
 
-    private func joinZoom(_ url: URL) {
+    private func joinButton(_ title: String, url: URL, tint: Color, isPrimary: Bool) -> some View {
+        Button(action: { join(url) }) {
+            Label(title, systemImage: "video.fill")
+                .font(.system(size: 16, weight: .semibold))
+                .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(tint)
+        .keyboardShortcut(isPrimary ? KeyboardShortcut(.return, modifiers: []) : nil)
+    }
+
+    private func join(_ url: URL) {
         NSWorkspace.shared.open(url)
         dismiss()
     }
